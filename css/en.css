@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*加了box-sizing:border-box属性，padding和border的值就不会在影响元素的宽高，相当于把padding和border的值都算在content里
+
+盒子模型会自动根据padding和border的值来调整content的值，就不需要手动调整
+
+标准盒子模型，一般浏览器也都默认为标准盒子模型。即：box-sizing:content-box
+
+怪异盒子模型，一般根据实际项目需要自行设置。即：box-sizing:border-box*/
+    font-size: 黑体;
+}
+
+body {
+    overflow: hidden;
+}
+
+/* 背景渐变设置 */
+section {
+    display: flex;
+    justify-content: center;
+    /*  justify-content属性
+作用：设置同一行子元素在X轴的对齐方式
+
+属性值	描述
+flex-start	排列在当前行的最左边
+flex-end	排列在当前行的最右边
+center	排列在当前行的中间位置
+space-between	间距相等排列，两边不留白
+space-around	间距相等排列，两边留白等于间距的一半 */
+    align-items: center;
+    min-height: 100vh;
+    /* linear-gradient:渐变模式 */
+    background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+}
+
+/* 设置不同盒子的位置和颜色 */
+section .color {
+    position: absolute;
+}
+
+section .color:nth-child(1) {
+    top: -350px;
+    width: 600px;
+    height: 600px;
+    background-color: #ff359b;
+}
+
+section .color:nth-child(2) {
+    bottom: -150px;
+    left: 100px;
+    width: 500px;
+    height: 500px;
+    background: #fffd87;
+}
+
+section .color:nth-child(3) {
+    bottom: 50px;
+    left: 100px;
+    width: 300px;
+    height: 300px;
+    background: #00dfff;
+}
+
+section .color {
+    /* 通过过滤设置模糊 */
+    filter: blur(150px);
+}
+
+/* 设置登录模块 */
+.container {
+    position: relative;
+    width: 400px;
+    min-height: 400px;
+    background: rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* backdrop-filter:透过该层的底部元素模糊化 */
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, .1);
+    border: 1px solid rgba(255, 255, 255, .5);
+    border-right: 1px solid rgba(255, 255, 255, .2);
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+
+.form {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+}
+
+.form h2 {
+    position: relative;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+}
+
+/* Login下的装饰 */
+.form h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 80px;
+    height: 4px;
+    background: #fff;
+}
+
+.form .inputBox {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* 修改input样式 */
+.form .inputBox input {
+    width: 100%;
+    background: rgba(255, 255, 255, .2);
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 35px;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, .5);
+    border-right: 1px solid rgba(255, 255, 255, .2);
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    letter-spacing: 1px;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+/* 设置登录模块 */
+.form .inputBox input[type="submit"]{
+    background: #fff;
+    color: #666;
+    max-width: 100px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+.forget{
+    margin-top: 5px;
+    color: #fff;
+}
+.forget a {
+    color: #fff;
+    font-weight: 600;
+}
+/* 设置装饰动画 */
+.box{
+    position: relative;
+}
+.box .square{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, .1);
+    border: 1px solid rgba(255, 255, 255, .5);
+    border-right: 1px solid rgba(255, 255, 255, .2);
+    border-bottom:  1px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+}
+.box .square:nth-child(1){
+    top: -50px;
+    right: -60px;
+    width: 100px;
+    height: 100px;
+}
+
+.box .square:nth-child(5){
+    top: -80px;
+    left: 140px;
+    width: 60px;
+    height: 60px;
+}
+.box .square:nth-child(3){
+    top: 150px;
+    left:350px;
+}
+.box .square:nth-child(4){
+top: 250px;
+left: -60px;
+}
+.box .square{
+    animation:animate 10s linear infinite ;
+    animation-delay: calc(-1s*var(--i));
+}
+@keyframes animate {
+    0%,100%{
+        transform: translateY(-40px);
+    }
+    50%{
+        transform: translateY(40px);
+    }
+}
